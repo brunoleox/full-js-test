@@ -20,6 +20,7 @@ const Layout = () => {
       <Card>
         <LeftPanel>
           <img src={logo} alt="Logo" style={{ width: 100 }} />
+          
           <Link to="/quotes">
             <Links>
               <span> Cotas </span>
@@ -31,19 +32,23 @@ const Layout = () => {
               <span> Histórico </span>
             </Links>
           </Link>
+
           <Link to="/gains">
             <Links>
               <span> Ganhos </span>
             </Links>
           </Link>
+
           <Link to="/compare">
             <Links>
               <span> Comparar </span>
             </Links>
           </Link>
+          
         </LeftPanel>
         <RightPanel>
           <Switch>
+
             <InternalCard>
               <Switch>
                 <Route path="/quotes">
@@ -58,6 +63,7 @@ const Layout = () => {
                 <Route path="/compare">
                   <Compare></Compare>
                 </Route>
+
               </Switch>
             </InternalCard>
           </Switch>
