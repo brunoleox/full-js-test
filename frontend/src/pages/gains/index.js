@@ -23,21 +23,20 @@ const Gains = () => {
     async function onSubmit(ev) {
         ev.preventDefault()
 
-        let body = {
-            purchasedAmount: +stock.purchasedAmount,
-            purchasedAt: stock.purchasedAt
-        }
+        await axios.get(`http://localhost:3003/stocks/${stock.stock_name}/gains`,
+            {
+                params: {
+                    purchasedAmount: +stock.purchasedAmount,
+                    purchasedAt: stock.purchasedAt
+                }
 
-       JSON.stringify(body)
-
-        await axios.get(`http://localhost:3003/stocks/${stock.stock_name}/gains`, body ).then((res) => {
-            setResStocks(res.data)
-            console.log(res.data)
-            
-        })
+            }).then((res) => {
+                setResStocks(res.data)
+                console.log(res.data)
+            })
     }
 
-    console.log(stock.stock_name, stock.purchasedAmount, stock.purchasedAt)
+    console.log(stock.stock_name, +stock.purchasedAmount, stock.purchasedAt)
 
     return (
         <>

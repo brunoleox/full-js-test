@@ -4,13 +4,12 @@ const moment = require('moment')
 const axios = require('axios')
 
 async function Gains(req, res) {
-    console.log(req.body)
+    console.log(req.query)
     const { stock_name } = req.params;
-
-    console.log(stock_name)
-
-    const amount = req.body.purchasedAmount
-    const dateInvested = req.body.purchasedAt
+    const { purchasedAmount, purchasedAt} = req.query
+    
+    const amount = +purchasedAmount
+    const dateInvested = purchasedAt
 
     const date = moment(dateInvested).format('YYYY-MM-DD')
     // const atualDate = moment(new Date()).format('YYYY-MM-DD')
