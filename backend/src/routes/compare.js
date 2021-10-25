@@ -26,7 +26,7 @@ async function Compare (req, res) {
         const lastPrice = dataGlobalQuotes['Global Quote']['05. price']
         const pricedAt = dataGlobalQuotes['Global Quote']['07. latest trading day']
 
-        let json = { 'Empresa': name, 'Preço': lastPrice, 'Data': pricedAt }
+        let json = { 'name': name, 'lastPrice': lastPrice, 'pricedAt': pricedAt }
         data.push(json)
         res.json({ "lastPrice": data })
 
