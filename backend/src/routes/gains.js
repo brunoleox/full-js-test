@@ -4,18 +4,21 @@ const moment = require('moment')
 const axios = require('axios')
 
 async function Gains(req, res) {
-
+    console.log(req.body)
     const { stock_name } = req.params;
 
-    const amount = req.query.purchasedAmount
-    const dateInvested = req.query.purchasedAt
+    console.log(stock_name)
+
+    const amount = req.body.purchasedAmount
+    const dateInvested = req.body.purchasedAt
 
     const date = moment(dateInvested).format('YYYY-MM-DD')
-    const atualDate = moment(new Date()).format('YYYY-MM-DD')
+    // const atualDate = moment(new Date()).format('YYYY-MM-DD')
+    const atualDate = "2021-10-22"
 
     console.log(amount, date, atualDate)
 
-    if (date > atualDate) {
+    if (date > 2021-10-22) {
         res.json({ "erro": "Data inicial maior que final" })
         res.status(400)
     }
@@ -36,7 +39,7 @@ async function Gains(req, res) {
     }
 
     try {
-        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock_name}&outputsize=compact&apikey=5PUN0YOE2VBGVG6C`
+        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock_name}&apikey=5PUN0YOE2VBGVG6C`
         const resTimeSeriesDaily = await axios.request({ ...options, url: url })
 
         const dataTimeSeriesDaily = resTimeSeriesDaily.data
@@ -54,6 +57,9 @@ async function Gains(req, res) {
             }
         });
         
+        console.log(dates)
+        console.log(prices[0].pricedAtDate, prices[1].pricedAtDate)
+
         const possibleGain = (amount * prices[0].pricedAtDate )
         const currentGain = (amount * prices[1].pricedAtDate)
 
@@ -67,7 +73,7 @@ async function Gains(req, res) {
             "prices": prices,
             "capitalGains": capitalGains.toFixed(2)  
         }
-
+        console.log(json)
         res.json(json)
 
     } catch (error) {
