@@ -50,7 +50,7 @@ const Historic = () => {
                         name="from"
                         onChange={onChange}
                         placeholder="Informe uma data inicial ex: 20211020"
-                        type="number"
+                        type="date"
                     >
                     </Input>
                     <Input
@@ -58,7 +58,7 @@ const Historic = () => {
                         name="to"
                         onChange={onChange}
                         placeholder="Informe uma data final ex: 20211022"
-                        type="number"
+                        type="date"
                     >
                     </Input>
                     <Button
@@ -80,23 +80,24 @@ const Historic = () => {
                         </ul>
                     </div>
                     <div>
-                        {resStoks.prices.map(price => (
-                            <table>
-                                <tr>
-                                    <td>Aberto</td>
-                                    <td>Baixa</td>
-                                    <td>Alta</td>
-                                    <td>Fechamento</td>
-                                    <td>Data</td>
-                                </tr>
-                                <tr style={{ fontWeight: 300 }}>
-                                    <td>R$ {price.opening}</td>
-                                    <td>R$ {price.low}</td>
-                                    <td>R$ {price.high}</td>
-                                    <td>R$ {price.opening}</td>
-                                    <td>{price.pricedAt}</td>
-                                </tr>
-
+                        {resStoks.prices.map((price, index) => (
+                            <table key={index}>
+                                <tbody>
+                                    <tr>
+                                        <td>Aberto</td>
+                                        <td>Baixa</td>
+                                        <td>Alta</td>
+                                        <td>Fechamento</td>
+                                        <td>Data</td>
+                                    </tr>
+                                    <tr style={{ fontWeight: 300 }}>
+                                        <td>R$ {price.opening}</td>
+                                        <td>R$ {price.low}</td>
+                                        <td>R$ {price.high}</td>
+                                        <td>R$ {price.opening}</td>
+                                        <td>{price.pricedAt}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         ))}
                     </div>
