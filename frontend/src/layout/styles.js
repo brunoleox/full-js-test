@@ -76,9 +76,9 @@ export const InternalCard = styled.div`
     rgba(255, 255, 255, 0.5));
 
     justify-content: center;
-    height: 60vh;
+    height: 80vh;
     margin: auto;
-    margin-top: 6rem;
-    padding: 1.5rem 2rem;
-    width: 80%;
+    margin: 2rem;
+    padding: 2rem ;
+    width: 90%;
 `

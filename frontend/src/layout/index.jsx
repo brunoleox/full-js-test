@@ -13,6 +13,7 @@ import Quotes from "../pages/quotes";
 import Historic from "../pages/historic";
 import Gains from "../pages/gains";
 import Compare from "../pages/compare";
+import Home from "../pages/home";
 
 const Layout = () => {
   return (
@@ -20,7 +21,7 @@ const Layout = () => {
       <Card>
         <LeftPanel>
           <img src={logo} alt="Logo" style={{ width: 100 }} />
-          
+
           <Link to="/quotes">
             <Links>
               <span> Cotas </span>
@@ -44,11 +45,9 @@ const Layout = () => {
               <span> Comparar </span>
             </Links>
           </Link>
-          
         </LeftPanel>
         <RightPanel>
           <Switch>
-
             <InternalCard>
               <Switch>
                 <Route path="/quotes">
@@ -63,7 +62,9 @@ const Layout = () => {
                 <Route path="/compare">
                   <Compare></Compare>
                 </Route>
-
+                <Route path="/">
+                  <Home></Home>
+                </Route>
               </Switch>
             </InternalCard>
           </Switch>
