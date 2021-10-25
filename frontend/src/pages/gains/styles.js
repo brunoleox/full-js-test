@@ -8,6 +8,7 @@ export const Form = styled.form`
         display: flex;
         flex-direction: column;
         position: relative;
+        overflow: hidden;
     }
 
     button {
@@ -17,6 +18,11 @@ export const Form = styled.form`
 
 export const Result = styled.div`
     margin: 20px 0;
+    
+
+    div {
+        overflow: hidden;
+    }
     
     ul {
         list-style: none;

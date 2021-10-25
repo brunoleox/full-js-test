@@ -81,15 +81,14 @@ const Gains = () => {
                 </div>
             </Form>
 
-            {/* <Result>
+            <Result>
                 {resStoks && <div>
                     <div>
-                        <ul>
-                            <li>
-                                Nome da Empresa: {resStoks.name}
-                                Valor Investido: R$ {resStoks.purchasedAmount}
-                                Investido em: {resStoks.purchasedAt}
-                            </li>
+                        <ul style={{fontWeight: 300}}>
+                            <li><strong>Nome da Empresa: </strong> {resStoks.name}</li>
+                            <li><strong>Valor Investido: </strong> R$ {resStoks.purchasedAmount}</li>
+                            <li><strong>Investido em: </strong> {resStoks.purchasedAt}</li>
+                            <li><strong>Ganho de capital estimado: </strong> R$ {resStoks.capitalGains}</li>
                         </ul>
                     </div>
                     <div>
@@ -97,9 +96,9 @@ const Gains = () => {
                             <table key={index}>
                                 <tbody>
                                     <tr>
-                                        <td>Precificado</td>
-                                        <td>Precificado</td>
-                                      
+                                        <th>Valor</th>
+                                        <th>Data</th>
+
                                     </tr>
                                     <tr style={{ fontWeight: 300 }}>
                                         <td>R$ {price.pricedAtDate}</td>
@@ -109,15 +108,10 @@ const Gains = () => {
                             </table>
                         ))}
                         <ul>
-                            <li>
-                            Ganho de capital estimado: {resStoks.capitalGains}
-                            </li>
                         </ul>
                     </div>
-
                 </div>}
-
-            </Result> */}
+            </Result>
         </>
     )
 }
