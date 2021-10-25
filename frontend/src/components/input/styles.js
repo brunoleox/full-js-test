@@ -7,6 +7,6 @@ export const AreaText = styled.input`
     font-weight: 300;
     padding: 10px;
     outline: none;
-    width: 50%;
+    width: 30vw;
     margin-top: 20px;
 `
