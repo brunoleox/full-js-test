@@ -42,8 +42,4 @@ export const Result = styled.div`
             }
         }
     }
-
-
-    
-
 `

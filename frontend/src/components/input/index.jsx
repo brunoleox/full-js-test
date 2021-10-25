@@ -7,6 +7,7 @@ const Input = (props) => {
   type={props.type}
   id={props.id}
   name={props.name}
+  required
   >
 
   </AreaText>;
