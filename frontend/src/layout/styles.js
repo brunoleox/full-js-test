@@ -36,7 +36,7 @@ export const LeftPanel = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     text-align: center;
     
     a {
