@@ -77,8 +77,21 @@ export const InternalCard = styled.div`
 
     justify-content: center;
     height: 80vh;
-    margin: auto;
+    overflow-y: scroll;
     margin: 2rem;
     padding: 2rem ;
     width: 90%;
+
+    ::-webkit-scrollbar {
+    width: 10px;
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }   
+    :-webkit-scrollbar-thumb {
+    background: #888; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+}
 `
