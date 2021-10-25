@@ -1,66 +1,73 @@
-import { Form, Result } from "./styles"
-import Input from "../../components/input"
-import Title from "../../components/title"
-import Button from "../../components/button"
-import axios from "axios"
+import { Form, Result } from "./styles";
+import Input from "../../components/input";
+import Title from "../../components/title";
+import Button from "../../components/button";
+import axios from "axios";
 
-import { useState } from "react"
+import { useState } from "react";
+import Loader from "../../components/skeleton";
 
 const Quotes = () => {
-    const [stock, setStock] = useState("")
-    const [resStoks, setResStocks] = useState()
+  const [stock, setStock] = useState("");
+  const [resStoks, setResStocks] = useState();
+  const [loader, setLoader] = useState(false);
 
-    function onChange(ev) {
-        const { value } = ev.target
-        setStock(value)
-    }
+  function onChange(ev) {
+    const { value } = ev.target;
+    setStock(value);
+  }
 
-    async function onSubmit(ev) {
-        ev.preventDefault()
-        await axios.get(`http://localhost:3003/stocks/${stock}/quote`).then((res) => {
-            setResStocks(res.data)
-        })
+  async function onSubmit(ev) {
+    ev.preventDefault();
+    setLoader(true);
+    await axios
+      .get(`http://localhost:3003/stocks/${stock}/quote`)
+      .then((res) => {
+        setResStocks(res.data);
+        setLoader(false);
+      });
+  }
 
-    }
-    return (
-        <>
-            <Form onSubmit={onSubmit}>
+  return (
+    <>
+      <Form onSubmit={onSubmit}>
+        <Title
+          title="Relatório atual de uma empresa"
+          subtitle="Insira abaixo a tag de identificação da empresa"
+        ></Title>
+        <div>
+          <Input
+            id="stock_name"
+            name="stock_name"
+            onChange={onChange}
+            placeholder="Exemplos de empresas: IBM, AMD, VALE..."
+            type="text"
+            
+          ></Input>
+          <Button type="submit" name="Pesquisar"></Button>
+        </div>
+      </Form>
 
-                <Title
-                    title="Relatório atual de uma empresa"
-                    subtitle="Insira abaixo a tag de identificação da empresa"
-                >
-                </Title>
-                <div>
-                    <Input
-                        id="stock_name"
-                        name="stock_name"
-                        onChange={onChange}
-                        placeholder="Exemplos de empresas: IBM, AMD, VALE..."
-                        type="text"
-                    >
-                    </Input>
-                    <Button
-                        type="submit"
-                        name="Pesquisar"
-                    ></Button>
-                </div>
-            </Form>
+      <Result>
+        {loader && <Loader/>}
+        {resStoks && (
+          <div>
+            <ul style={{ fontWeight: 300 }}>
+              <li>
+                <strong>Nome da Empresa:</strong> {resStoks.Empresa}
+              </li>
+              <li>
+                <strong>Valor atual: </strong> R$ {resStoks.Preço}
+              </li>
+              <li>
+                <strong>Data da Cotação: </strong> {resStoks.Data}
+              </li>
+            </ul>
+          </div>
+        )}
+      </Result>
+    </>
+  );
+};
 
-            <Result>
-                {resStoks && <div>
-
-                    <ul style={{fontWeight: 300}}>
-                        <li><strong>Nome da Empresa:</strong> {resStoks.Empresa}</li>
-                        <li><strong>Valor atual: </strong> R$ {resStoks.Preço}</li>
-                        <li><strong>Data da Cotação: </strong> {resStoks.Data}</li>
-                    </ul>
-
-                </div>}
-
-            </Result>
-        </>
-    )
-}
-
-export default Quotes
+export default Quotes;
