@@ -1,26 +1,30 @@
-import { Form } from "./styles"
-
-import { useParams } from "react-router-dom"
-
+import { Form, Result } from "./styles"
 import Input from "../../components/input"
 import Title from "../../components/title"
 import Button from "../../components/button"
+import axios from "axios"
+
 import { useState } from "react"
 
 const Quotes = () => {
-
-    const { stock_name } = useParams()
-
     const [stock, setStock] = useState("")
+    const [resStoks, setResStocks] = useState()
 
-
-    function handleChanges() {
+    function onChange(ev) {
+        const { value } = ev.target
+        setStock(value)
     }
 
+    async function onSubmit(ev) {
+        ev.preventDefault()
+        await axios.get(`http://localhost:3003/stocks/${stock}/quote`).then((res) => {
+            setResStocks(res.data)
+        })
 
+    }
     return (
         <>
-            <Form action={""}>
+            <Form onSubmit={onSubmit}>
 
                 <Title
                     title="Relatório atual de uma empresa"
@@ -29,24 +33,32 @@ const Quotes = () => {
                 </Title>
                 <div>
                     <Input
-                        type="text"
-                        placeholder="Exemplos de empresas: IBM, AMD, VALE..."
                         id="stock_name"
-                        value={stock}
-                        onChange={""}
+                        name="stock_name"
+                        onChange={onChange}
+                        placeholder="Exemplos de empresas: IBM, AMD, VALE..."
+                        type="text"
                     >
                     </Input>
                     <Button
                         type="submit"
                         name="Pesquisar"
-                        onClick={""}
                     ></Button>
                 </div>
             </Form>
 
-            <div style={{ margin: "20px 0" }}>
-                aaaaa
-            </div>
+            <Result>
+                {resStoks && <div>
+
+                    <ul style={{fontWeight: 300}}>
+                        <li><strong>Nome da Empresa:</strong> {resStoks.Empresa}</li>
+                        <li><strong>Valor atual: </strong> R$ {resStoks.Preço}</li>
+                        <li><strong>Data da Cotação: </strong> {resStoks.Data}</li>
+                    </ul>
+
+                </div>}
+
+            </Result>
         </>
     )
 }
