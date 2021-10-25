@@ -12,12 +12,9 @@ async function Gains(req, res) {
     const dateInvested = purchasedAt
 
     const date = moment(dateInvested).format('YYYY-MM-DD')
-    // const atualDate = moment(new Date()).format('YYYY-MM-DD')
-    const atualDate = "2021-10-22"
-
-    console.log(amount, date, atualDate)
-
-    if (date > 2021-10-22) {
+    const atualDate = moment(new Date()).format('YYYY-MM-DD')
+    
+    if (date > atualDate) {
         res.json({ "erro": "Data inicial maior que final" })
         res.status(400)
     }
@@ -72,7 +69,7 @@ async function Gains(req, res) {
             "prices": prices,
             "capitalGains": capitalGains.toFixed(2)  
         }
-        console.log(json)
+        
         res.json(json)
 
     } catch (error) {
