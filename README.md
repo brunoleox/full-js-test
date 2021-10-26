@@ -12,21 +12,21 @@ Com o objetivo de friltrar valores atuais ou anteriores de ações.
 ## Inicializando o back-end
 
 Após clonar o projeto, navegue até a pasta do back-end.
-$ cd backend
+* cd backend
 
 Execute em seu terminal
-$ npm i
+* npm i
 
 Para incializar o backend
-$ npm run dev
+* npm run dev
 
-# Inicializando o front-end
+## Inicializando o front-end
 
 Navegue até a pasta do front-end.
-$ cd frontend
+* cd frontend
 
 Execute em seu terminal
-$ npm i
+* npm i
 
 Para incializar o frontend
-$ npm run start
+* npm run start
