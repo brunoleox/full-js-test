@@ -2,7 +2,7 @@
 
 O projeto contém uma API Rest, desenvolvida em Node.Js como back-end, em seu front-end ReactJs.
 
-Com o objetivo de friltrar valores atuais ou anteriores de ações.
+Com o objetivo de filtrar valores atuais ou anteriores de ações.
 
 # Requisitos
 
